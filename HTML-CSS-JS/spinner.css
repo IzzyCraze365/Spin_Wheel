@@ -64,7 +64,7 @@ body {
     50% 0%,
     15% 100%,
     85% 100%
-  ); /* This creates the triangle shape. */
+  ); /* This creates the triangle shape, https://bennettfeely.com/clippy/ */
 }
 
 /* This styles and creates the actual wheel */
@@ -95,7 +95,7 @@ body {
     56% 0,
     100% 100%,
     0 56%
-  ); /* This creates the pie wedges */
+  ); /* This creates the pie wedges, https://bennettfeely.com/clippy/*/
   display: flex;
   justify-content: center;
   align-items: center;
