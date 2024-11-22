@@ -1,0 +1,117 @@
+/* Followed an Online Tutorial to create this project
+https://www.youtube.com/watch?v=F3-lK_-PQr0 */
+
+/* Use this Clippy website to get the shapes
+https://bennettfeely.com/clippy/ */
+
+@import url(`https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap`);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center; /* moves the content center left to right. */
+  align-items: center; /* moves the content center top to bottom. */
+  min-height: 100vh; /* fills the screen */
+  background-color: #333;
+}
+
+.container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* This styles and creates the Spin Button */
+.container .spinBtn {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  border-radius: 50%; /* This turns it into a circle */
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase; /* Forces all text to be uppercase */
+  font-weight: 600; /* makes the text bolder */
+  color: #333;
+  letter-spacing: 0.1em;
+  border: 4px solid rgba(0, 0, 0, 0.75);
+  cursor: pointer; /* makes the mouse a hand when hovering over button */
+  user-select: none;
+}
+
+/* This styles and creates the arrow on the Spin Button */
+.container .spinBtn::before {
+  content: "";
+  position: absolute;
+  top: -28px;
+  width: 20px;
+  height: 30px;
+  background: #f00;
+  clip-path: polygon(
+    50% 0%,
+    15% 100%,
+    85% 100%
+  ); /* This creates the triangle shape. */
+}
+
+/* This styles and creates the actual wheel */
+.container .wheel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 0 5px #333, 0 0 0 15px #fff, 0 0 0 18px #111;
+  transition: transform 5s ease-in-out;
+}
+
+/* This styles and creates the sections of the wheel */
+.container .wheel .number {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  background-color: var(--clr);
+  transform-origin: bottom right;
+  transform: rotate(calc(45deg * var(--i)));
+  clip-path: polygon(
+    0 0,
+    56% 0,
+    100% 100%,
+    0 56%
+  ); /* This creates the pie wedges */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+}
+
+/* This creates the numbers in the Pie Wedges */
+.container .wheel .number span {
+  position: relative;
+  transform: rotate(45deg);
+  font-size: 2em;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 3px 5px 2px rgba(0, 0, 0, 0.15);
+}
+
+/* This adds a dollar sign to the end of the element values */
+.container .wheel .number span::after {
+  content: "$"; /* This adds a dollar sign to the end of the element values */
+  position: absolute;
+  font-size: 0.75em;
+  font-weight: 500;
+}
