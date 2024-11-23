@@ -3,6 +3,7 @@ let wheel1 = document.querySelector(".wheel1");
 let spinBtn = document.querySelector(".spinBtn");
 let value = 0;
 
+/* Arrray works the best with at least 6 items */
 let objectplacholder = {
   title: "Placeholder Title",
   array: [
@@ -11,16 +12,7 @@ let objectplacholder = {
     "ArrayItem3",
     "ArrayItem4",
     "ArrayItem5",
-    "ArrayItem6",
-    "ArrayItem7",
-    "ArrayItem8",
-    "ArrayItem9",
-    "ArrayItem10",
-    "ArrayItem11",
-    "ArrayItem12",
-    "ArrayItem13",
-    "ArrayItem14",
-    "ArrayItem15",
+    "ArrayItem6"
   ],
   output: "Here is the placeholder output tag",
 };
@@ -43,7 +35,12 @@ function createWheel(object) {
     let wedge = document.createElement("div");
     let colorChoice = colorArray[i%8];
     wedge.className = "number";
-    wedge.style = `--i: ${i}; --clr: ${colorChoice}`;
+    wedge.style = `transform: rotate(calc((360/${object.array.length})*${i}deg)); clip-path: polygon(
+    0 0,
+    ${(360/object.array.length)+((360-object.array.length)*.025)}% 0,
+    100% 100%,
+    0 ${(360/object.array.length)+((360-object.array.length)*.025)}%
+  ); --clr: ${colorChoice}`;
     wheel.appendChild(wedge);
     let wedgeContent = document.createElement("span");
     wedgeContent.className = "value";
