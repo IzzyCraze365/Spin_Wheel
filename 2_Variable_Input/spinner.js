@@ -1,4 +1,5 @@
 let wheel = document.querySelector(".wheel");
+let wheel1 = document.querySelector(".wheel1");
 let spinBtn = document.querySelector(".spinBtn");
 let value = 0;
 
@@ -23,6 +24,33 @@ let objectplacholder = {
   ],
   output: "Here is the placeholder output tag",
 };
+
+let colorArray = [
+  "#db7093",
+  "#20b2aa",
+  "#d63e92",
+  "#daa520",
+  "#ff7f50",
+  "#3cb371",
+  "#ff340f",
+  "#4169e1",
+];
+
+createWheel(objectplacholder);
+
+function createWheel(object) {
+  for (let i = 0; i < object.array.length; i++) {
+    let wedge = document.createElement("div");
+    let colorChoice = colorArray[i%8];
+    wedge.className = "number";
+    wedge.style = `--i: ${i}; --clr: ${colorChoice}`;
+    wheel.appendChild(wedge);
+    let wedgeContent = document.createElement("span");
+    wedgeContent.className = "value";
+    wedgeContent.innerText = object.array[i];
+    wedge.appendChild(wedgeContent);
+  }
+}
 
 function spinTheWheel() {
   console.log("Button Clicked", value);

@@ -116,10 +116,10 @@ body {
   transform: rotate(calc(45deg * var(--i))); /* TODO this will need to change based off the number of wedges */
   clip-path: polygon(
     0 0,
-    56% 0,
+    50% 0,
     100% 100%,
-    0 56%
-  ); /* This creates the pie wedges, https://bennettfeely.com/clippy/*/
+    0 50%
+  ); /* This creates the pie wedges, https://bennettfeely.com/clippy/ */
   display: flex;
   justify-content: center;
   align-items: center;
