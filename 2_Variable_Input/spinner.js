@@ -66,7 +66,7 @@ function spinTheWheel() {
   console.log("Total Value", value);
   console.log("New Value", value % 360);
   wheel.style.transform = `rotate(${value}deg)`;
-  let position = rotation % 360;
+  let position = value % 360;
   resultReveal(position); //! This logic will break the site until its fixed
 }
 
