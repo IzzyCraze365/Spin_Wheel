@@ -40,7 +40,7 @@ body {
   align-items: center;
 }
 
-.tagline{
+.tagline {
   text-align: center;
   text-transform: uppercase; /* Forces all text to be uppercase */
   margin: 5%;
@@ -105,7 +105,8 @@ body {
   background-color: var(--background);
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 0 0 5px var(--background), 0 0 0 15px var(--primary), 0 0 0 18px var(--shadow);
+  box-shadow: 0 0 0 5px var(--background), 0 0 0 15px var(--primary),
+    0 0 0 18px var(--shadow);
   transition: transform 5s ease-in-out;
   z-index: -1;
 }
@@ -117,7 +118,9 @@ body {
   height: 50%;
   background-color: var(--clr);
   transform-origin: bottom right;
-  transform: rotate(calc(45deg * var(--i))); /* TODO this will need to change based off the number of wedges */
+  transform: rotate(
+    calc(45deg * var(--i))
+  ); /* TODO this will need to change based off the number of wedges */
   clip-path: polygon(
     0 0,
     50% 0,

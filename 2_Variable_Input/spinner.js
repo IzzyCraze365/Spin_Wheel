@@ -65,18 +65,25 @@ result.className = "result";
 
 function spinTheWheel() {
   console.log("Button Clicked", value);
-  let RNG = Math.random();
-  let value1 = Math.ceil(RNG * 3600);
   value += Math.ceil(Math.random() * 3600);
   console.log("New Value", value);
   wheel.style.transform = `rotate(${value}deg)`;
-  resultReveal(RNG,value);
+  resultReveal(value);
 }
 
 //TODO I need to finx the logic here
-function resultReveal(rotaionValue, currentPosition){
-  let position = currentPosition%360
+function resultReveal(rotation){
+  let position = rotation%360
   console.log("Position", position);
+
+  //Im gonna need a dumb if statement in here that loops through 360 numbers
+  for (let i = 0; i < 360; i++){
+    if(i = position){
+      result.innerHTML= selectionObject.array[i];
+
+      
+    }
+  }
   let finalResult = Math.floor(rotaionValue * (selectionObject.array.length))
   console.log("Final Result", finalResult);
   //TODO I need code in here to output the correct result
