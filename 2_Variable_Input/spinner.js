@@ -65,18 +65,22 @@ result.className = "result";
 
 function spinTheWheel() {
   console.log("Button Clicked", value);
+  let RNG = Math.random();
+  let value1 = Math.ceil(RNG * 3600);
   value += Math.ceil(Math.random() * 3600);
   console.log("New Value", value);
   wheel.style.transform = `rotate(${value}deg)`;
-  resultReveal(value);
+  resultReveal(RNG,value);
 }
 
-function resultReveal(rotation){
-  console.log("Result Rotation", rotation);
-  let finalResult = rotation%360;
+//TODO I need to finx the logic here
+function resultReveal(rotaionValue, currentPosition){
+  let position = currentPosition%360
+  console.log("Position", position);
+  let finalResult = Math.floor(rotaionValue * (selectionObject.array.length))
   console.log("Final Result", finalResult);
   //TODO I need code in here to output the correct result
-  result.innerHTML= selectionObject.array[(360/selectionObject.array.length)]
+  result.innerHTML= selectionObject.array[finalResult]
 
 }
 
