@@ -3,7 +3,7 @@ let wheel1 = document.querySelector(".wheel1");
 let spinBtn = document.querySelector(".spinBtn");
 let value = 0;
 
-/* Arrray works the best with at least 6 items */
+/* Arrray works NEEDS to have at least 6 items */
 let objectplacholder = {
   title: "Placeholder Title",
   array: [
@@ -11,8 +11,6 @@ let objectplacholder = {
     "ArrayItem2",
     "ArrayItem3",
     "ArrayItem4",
-    "ArrayItem5",
-    "ArrayItem6"
   ],
   output: "Here is the placeholder output tag",
 };
