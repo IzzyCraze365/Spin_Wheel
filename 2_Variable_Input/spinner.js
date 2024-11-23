@@ -2,6 +2,28 @@ let wheel = document.querySelector(".wheel");
 let spinBtn = document.querySelector(".spinBtn");
 let value = 0;
 
+let objectplacholder = {
+  title: "Placeholder Title",
+  array: [
+    "ArrayItem1",
+    "ArrayItem2",
+    "ArrayItem3",
+    "ArrayItem4",
+    "ArrayItem5",
+    "ArrayItem6",
+    "ArrayItem7",
+    "ArrayItem8",
+    "ArrayItem9",
+    "ArrayItem10",
+    "ArrayItem11",
+    "ArrayItem12",
+    "ArrayItem13",
+    "ArrayItem14",
+    "ArrayItem15",
+  ],
+  output: "Here is the placeholder output tag",
+};
+
 function spinTheWheel() {
   console.log("Button Clicked", value);
   value += Math.ceil(Math.random() * 3600);
