@@ -8,7 +8,7 @@ let result = document.querySelector(".result");
 let spinBtn = document.querySelector(".spinBtn");
 let value = 0;
 
-/* Arrray works NEEDS to have at least 6 items */
+/* Arrray works NEEDS to have at least 4 items */
 let objectplacholder = {
   title: "Placeholder Title",
   array: [
@@ -26,7 +26,7 @@ let objectplacholder = {
 };
 
 //! This will change based off what object we are inputting
-let selectionObject = objectplacholder;
+let selectionObject = objectplacholder; // Default Data
 //let selectionObject = testArray;
 //let selectionObject = octStudents;
 

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spin Wheel</title>
+    <style>
+      @import url(`https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap`);
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        --primary: #fff; /* primary color sued for text */
+        --background: #333; /* default background color */
+        --shadow: #111; /* shadow color */
+      }
+
+      body {
+        display: flex;
+        justify-content: center; /* moves the content center left to right. */
+        align-items: center; /* moves the content center top to bottom. */
+        min-height: 100vh; /* fills the screen */
+        background-color: var(--background);
+      }
+
+      .wrapper {
+        width: 80%;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+      }
+
+      .container {
+        position: relative;
+        left: 25%;
+        right: auto;
+        width: 400px;
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .tagline {
+        text-align: center;
+        text-transform: uppercase; /* Forces all text to be uppercase */
+        margin: 5%;
+        font-size: 2em;
+        color: var(--background);
+        background-color: var(--primary);
+        border: solid 5px var(--shadow);
+      }
+
+      .title {
+        min-width: 20%;
+      }
+
+      .output {
+        min-width: 20%;
+      }
+
+      /* This styles and creates the Spin Button */
+      .spinBtn {
+        position: absolute;
+        margin: auto;
+        width: 60px;
+        height: 60px;
+        background-color: var(--primary);
+        border-radius: 50%; /* This turns it into a circle */
+        text-align: center;
+        text-justify: newspaper;
+        justify-content: center;
+        align-items: center;
+        text-transform: uppercase; /* Forces all text to be uppercase */
+        font-weight: 600; /* makes the text bolder */
+        color: var(--background);
+        letter-spacing: 0.1em;
+        border: 4px solid rgba(0, 0, 0, 0.75);
+        cursor: pointer; /* makes the mouse a hand when hovering over button */
+        user-select: none;
+        z-index: 2;
+      }
+
+      /* This styles and creates the arrow on the Spin Button */
+      .spinBtn::before {
+        content: "";
+        position: absolute;
+        top: -45px;
+        width: 35px;
+        height: 50px;
+        background: var(--primary);
+        clip-path: polygon(
+          50% 0%,
+          15% 100%,
+          85% 100%
+        ); /* This creates the triangle shape, https://bennettfeely.com/clippy/ */
+      }
+
+      /* This styles and creates the actual wheel */
+      .wheel {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--background);
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 0 0 5px var(--background), 0 0 0 15px var(--primary),
+          0 0 0 18px var(--shadow);
+        transition: transform 5s ease-in-out;
+        z-index: -1;
+      }
+
+      /* This styles and creates the sections of the wheel */
+      .wedge {
+        position: absolute;
+        width: 50%;
+        height: 50%;
+        background-color: var(--clr);
+        transform-origin: bottom right;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        user-select: none;
+        cursor: pointer;
+      }
+
+      /* This creates the numbers in the Pie Wedges */
+      .value {
+        position: relative;
+        transform: rotate(45deg);
+        /* font-size: 2em; */
+        font-weight: 700;
+        color: var(--primary);
+        text-shadow: 3px 5px 2px rgba(0, 0, 0, 0.15);
+      }
+
+      /* This styles the Result after the spinner stops */
+      .result {
+        color: var(--primary);
+        background-color: var(--shadow);
+        text-shadow: 3px 5px 2px rgba(255, 255, 255, 0.2);
+        font-weight: bolder;
+        font-style: italic;
+        text-decoration: underline;
+      }
+
+      /* This adds a dollar sign to the end of the element values */
+      .container .wheel .number span::after {
+        content: "$"; /* This adds a dollar sign to the end of the element values */
+        position: absolute;
+        font-size: 0.75em;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="title tagline">Placeholder Title is where it needs to be</div>
+      <div class="container">
+        <button class="spinBtn">sPiN</button>
+        <div class="wheel"></div>
+      </div>
+      <div class="tagline">
+        <p class="output"></p>
+        <p class="result"></p>
+      </div>
+    </div>
+    <script type="module">
+      //import testArray from "./test.js";
+      //import octStudents from "./ptsb-oct-2024-cohort.js";
+
+      let wheel = document.querySelector(".wheel");
+      let title = document.querySelector(".title");
+      let output = document.querySelector(".output");
+      let result = document.querySelector(".result");
+      let spinBtn = document.querySelector(".spinBtn");
+      let value = 0;
+
+      /* Arrray works NEEDS to have at least 4 items */
+      let objectplacholder = {
+        title: "Placeholder Title",
+        array: [
+          "Array Item 1",
+          "Array Item 2",
+          "Array Item3 ",
+          "Array Item 4",
+          "Array Item 5",
+          "Array Item 6",
+          "Array Item 7",
+          "Array Item 8",
+          "Array Item 9",
+        ],
+        output: "Here is the placeholder output tag",
+      };
+
+      //! This will change based off what object we are inputting
+      let selectionObject = objectplacholder;
+      //let selectionObject = testArray;
+      //let selectionObject = octStudents;
+
+      // This is the Color Wheel for the Spinner
+      let colorArray = [
+        "#db7093",
+        "#20b2aa",
+        "#d63e92",
+        "#daa520",
+        "#ff7f50",
+        "#3cb371",
+        "#ff340f",
+        "#4169e1",
+      ];
+
+      // Function Calls
+      createWheel(selectionObject);
+      spinBtn.addEventListener("click", () => {
+        spinTheWheel();
+      });
+
+      //The following function Builds out the Spinner Wheel based on the object it is provided
+      function createWheel(object) {
+        title.innerHTML = `<p>${object.title}</p>`;
+        output.innerHTML = object.output;
+        let result = document.createElement("p");
+        output.appendChild(result);
+        result.className = "result";
+        for (let i = 0; i < object.array.length; i++) {
+          let wedge = document.createElement("div");
+          let colorChoice = colorArray[i % 8];
+          //The following IF statelemnt will only trigger sot he first and last items do not match in color
+          if (object.array.length % 8 === 1 && i + 1 === object.array.length) {
+            colorChoice = "#e80909";
+          }
+          wedge.className = "wedge";
+          // The transform rotate style below had to be in negetive degrees to the array would match the positioning and direction of the wheel.
+          wedge.style = `transform: rotate(calc((360/${
+            object.array.length
+          })*${-i}deg)); clip-path: polygon(
+    0 0,
+    ${360 / object.array.length + (360 - object.array.length) * 0.025}% 0,
+    100% 100%,
+    0 ${360 / object.array.length + (360 - object.array.length) * 0.025}%
+  ); --clr: ${colorChoice}`;
+          wheel.appendChild(wedge);
+          let wedgeContent = document.createElement("span");
+          wedgeContent.className = "value";
+          wedgeContent.innerText = object.array[i];
+          wedge.appendChild(wedgeContent);
+        }
+      }
+
+      // After the button is pressed the wheel is spun.
+      // Most of the TESTS are in this function
+      function spinTheWheel() {
+        spinBtn.style = `color: var(--primary)`;
+        spinBtn.disabled = true;
+        result.innerHTML = "";
+        /* console.log("Button Clicked", value); //! TEST */
+        value += Math.ceil(Math.random() * 3600);
+        /* console.log("Total Value", value); //! TEST */
+        /* console.log("New Value", value % 360); //! TEST */
+        wheel.style.transform = `rotate(${value}deg)`;
+        let position = (value - 2 * selectionObject.array.length) % 360; //The roulet is about 15 degrees off center so this centers it
+        setTimeout(resultReveal, 5500, position); //Function will run after 5.5 seconds
+      }
+
+      // The reveal is delayed by 5.5 seconds
+      function resultReveal(rotation) {
+        spinBtn.style = `color: var(--background)`;
+        spinBtn.disabled = false;
+        /* console.log("rotation", rotation); //! TEST */
+        let wedgeSize = 360 / selectionObject.array.length;
+        /* console.log("wedgeSize", wedgeSize); //! TEST */
+
+        for (let i = 0; i < selectionObject.array.length; i++) {
+          /* console.log("Index:",i,", rotation:",rotation,", wedgeSize:",wedgeSize); //! TEST */
+          if (rotation >= i * wedgeSize && rotation < (i + 1) * wedgeSize) {
+            result.innerHTML = selectionObject.array[i];
+            console.log("Result =", result.innerHTML); // prints the result
+            break;
+          } else if (rotation < 0) {
+            result.innerHTML = selectionObject.array[0];
+            console.log("Result =", result.innerHTML); // prints the result
+            break;
+          } /* else {
+      console.log("Next Loop"); //! TEST
+    } */
+        }
+      }
+    </script>
+  </body>
+</html>
