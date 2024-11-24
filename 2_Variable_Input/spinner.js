@@ -70,16 +70,21 @@ function createWheel(object) {
 }
 
 function spinTheWheel() {
+  spinBtn.style = `color: var(--primary)`;
+  spinBtn.disabled = true;
+  result.innerHTML = "";
   console.log("Button Clicked", value);
   value += Math.ceil(Math.random() * 3600);
   console.log("Total Value", value);
   console.log("New Value", value % 360);
   wheel.style.transform = `rotate(${value}deg)`;
   let position = (value - 15) % 360; //The roulet is about 15 degrees off center so this centers it
-  resultReveal(position);
+  setTimeout(resultReveal, 5500, position); //Function will run after 5.5 seconds
 }
 
 function resultReveal(rotation) {
+  spinBtn.style = `color: var(--background)`;
+  spinBtn.disabled = false;
   console.log("rotation", rotation);
   let wedgeSize = 360 / selectionObject.array.length;
   console.log("wedgeSize", wedgeSize);
