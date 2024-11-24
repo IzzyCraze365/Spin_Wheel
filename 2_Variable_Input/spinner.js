@@ -10,7 +10,15 @@ let value = 0;
 /* Arrray works NEEDS to have at least 6 items */
 let objectplacholder = {
   title: "Placeholder Title",
-  array: ["ArrayItem1", "ArrayItem2", "ArrayItem3", "ArrayItem4"],
+  array: [
+    "ArrayItem1",
+    "ArrayItem2",
+    "ArrayItem3",
+    "ArrayItem4",
+    "ArrayItem5",
+    "ArrayItem6",
+    "ArrayItem7",
+  ],
   output: "Here is the placeholder output tag",
 };
 
@@ -44,9 +52,10 @@ function createWheel(object) {
     let wedge = document.createElement("div");
     let colorChoice = colorArray[i % 8];
     wedge.className = "wedge";
+    // The transform rotate style below had to be in negetive degrees to the array would match the positioning and direction of the wheel.
     wedge.style = `transform: rotate(calc((360/${
       object.array.length
-    })*${i}deg)); clip-path: polygon(
+    })*${-i}deg)); clip-path: polygon(
     0 0,
     ${360 / object.array.length + (360 - object.array.length) * 0.025}% 0,
     100% 100%,
@@ -66,20 +75,32 @@ function spinTheWheel() {
   console.log("Total Value", value);
   console.log("New Value", value % 360);
   wheel.style.transform = `rotate(${value}deg)`;
-  let position = value % 360;
-  resultReveal(position); //! This logic will break the site until its fixed
+  let position = (value - 15) % 360; //The roulet is about 15 degrees off center so this centers it
+  resultReveal(position);
 }
 
-//TODO I need to finx the logic here
 function resultReveal(rotation) {
-  console.log("Position", rotation);
-  //Im gonna need a dumb if statement in here that loops through 360 numbers
-  for (let i = 0; i < 360; i++) {
-    if ((i = rotation)) {
-      for (let j = 0; selectionObject.array.length; j++) {
-        if (Math.floor(j * selectionObject.array.length) === 360)
-          result.innerHTML = selectionObject.array[j];
-      }
+  console.log("rotation", rotation);
+  let wedgeSize = 360 / selectionObject.array.length;
+  console.log("wedgeSize", wedgeSize);
+
+  for (let i = 0; i < selectionObject.array.length; i++) {
+    console.log(
+      "Index:",
+      i,
+      ", rotation:",
+      rotation,
+      ", wedgeSize:",
+      wedgeSize
+    );
+    if (rotation >= i * wedgeSize && rotation < (i + 1) * wedgeSize) {
+      result.innerHTML = selectionObject.array[i];
+      break;
+    } else if (rotation < 0) {
+      result.innerHTML = selectionObject.array[0];
+      break;
+    } else {
+      console.log("Next Loop");
     }
   }
 }
