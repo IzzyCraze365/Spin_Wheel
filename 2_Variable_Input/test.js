@@ -1,4 +1,4 @@
-const test = {
+const testArray = {
   title: "Number Test",
   array: [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
@@ -25,7 +25,7 @@ const test = {
     338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352,
     353, 354, 355, 356, 357, 358, 359, 360,
   ],
-  output: "Here is the selected Number (Range 1 - 360",
+  output: "Here is the selected Number (Range 1 - 360)",
 };
 
-export default test;
+export default testArray;

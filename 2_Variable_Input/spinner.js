@@ -1,4 +1,5 @@
-//import test from "./test.js";
+import testArray from "./test.js";
+import octStudents from "./ptsb-oct-2024-cohort.js";
 
 let wheel = document.querySelector(".wheel");
 let title = document.querySelector(".title");
@@ -11,21 +12,25 @@ let value = 0;
 let objectplacholder = {
   title: "Placeholder Title",
   array: [
-    "ArrayItem1",
-    "ArrayItem2",
-    "ArrayItem3",
-    "ArrayItem4",
-    "ArrayItem5",
-    "ArrayItem6",
-    "ArrayItem7",
+    "Array Item 1",
+    "Array Item 2",
+    "Array Item3 ",
+    "Array Item 4",
+    "Array Item 5",
+    "Array Item 6",
+    "Array Item 7",
+    "Array Item 8",
+    "Array Item 9",
   ],
   output: "Here is the placeholder output tag",
 };
 
-/* This will change based off what object we are inputting */
+//! This will change based off what object we are inputting
 let selectionObject = objectplacholder;
-//let selectionObject = test;
+//let selectionObject = testArray;
+//let selectionObject = octStudents;
 
+// This is the Color Wheel for the Spinner
 let colorArray = [
   "#db7093",
   "#20b2aa",
@@ -37,11 +42,13 @@ let colorArray = [
   "#4169e1",
 ];
 
+// Function Calls
 createWheel(selectionObject);
 spinBtn.addEventListener("click", () => {
   spinTheWheel();
 });
 
+//The following function Builds out the Spinner Wheel based on the object it is provided
 function createWheel(object) {
   title.innerHTML = `<p>${object.title}</p>`;
   output.innerHTML = object.output;
@@ -51,6 +58,10 @@ function createWheel(object) {
   for (let i = 0; i < object.array.length; i++) {
     let wedge = document.createElement("div");
     let colorChoice = colorArray[i % 8];
+    //The following IF statelemnt will only trigger sot he first and last items do not match in color
+    if (object.array.length % 8 === 1 && i + 1 === object.array.length) {
+      colorChoice = "#e80909";
+    }
     wedge.className = "wedge";
     // The transform rotate style below had to be in negetive degrees to the array would match the positioning and direction of the wheel.
     wedge.style = `transform: rotate(calc((360/${
@@ -69,43 +80,41 @@ function createWheel(object) {
   }
 }
 
+// After the button is pressed the wheel is spun.
+// Most of the TESTS are in this function
 function spinTheWheel() {
   spinBtn.style = `color: var(--primary)`;
   spinBtn.disabled = true;
   result.innerHTML = "";
-  console.log("Button Clicked", value);
+  /* console.log("Button Clicked", value); //! TEST */
   value += Math.ceil(Math.random() * 3600);
-  console.log("Total Value", value);
-  console.log("New Value", value % 360);
+  /* console.log("Total Value", value); //! TEST */
+  /* console.log("New Value", value % 360); //! TEST */
   wheel.style.transform = `rotate(${value}deg)`;
-  let position = (value - 15) % 360; //The roulet is about 15 degrees off center so this centers it
+  let position = (value - 2 * selectionObject.array.length) % 360; //The roulet is about 15 degrees off center so this centers it
   setTimeout(resultReveal, 5500, position); //Function will run after 5.5 seconds
 }
 
+// The reveal is delayed by 5.5 seconds
 function resultReveal(rotation) {
   spinBtn.style = `color: var(--background)`;
   spinBtn.disabled = false;
-  console.log("rotation", rotation);
+  /* console.log("rotation", rotation); //! TEST */
   let wedgeSize = 360 / selectionObject.array.length;
-  console.log("wedgeSize", wedgeSize);
+  /* console.log("wedgeSize", wedgeSize); //! TEST */
 
   for (let i = 0; i < selectionObject.array.length; i++) {
-    console.log(
-      "Index:",
-      i,
-      ", rotation:",
-      rotation,
-      ", wedgeSize:",
-      wedgeSize
-    );
+    /* console.log("Index:",i,", rotation:",rotation,", wedgeSize:",wedgeSize); //! TEST */
     if (rotation >= i * wedgeSize && rotation < (i + 1) * wedgeSize) {
       result.innerHTML = selectionObject.array[i];
+      console.log("Result =", result.innerHTML); // prints the result
       break;
     } else if (rotation < 0) {
       result.innerHTML = selectionObject.array[0];
+      console.log("Result =", result.innerHTML); // prints the result
       break;
-    } else {
-      console.log("Next Loop");
-    }
+    } /* else {
+      console.log("Next Loop"); //! TEST
+    } */
   }
 }
