@@ -151,3 +151,9 @@ body {
   font-size: 0.75em;
   font-weight: 500;
 }
+
+/* TODO - THe following class is optional if you want the result to be displayed seperate from the Spinner Wheel 
+NOTE: that the more wedge pieces added the less accurate the wheel becomes so a display may be recommended */
+.optionalSelection {
+  display: none;
+}
