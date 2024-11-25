@@ -4,6 +4,7 @@ import pokemon151 from "../Spinner-Data/pokemon.js";
 
 let wheel = document.querySelector(".wheel");
 let title = document.querySelector(".title");
+let optionalSelection = document.querySelector(".optionalSelection");
 let output = document.querySelector(".output");
 let result = document.querySelector(".result");
 let spinBtn = document.querySelector(".spinBtn");
@@ -28,7 +29,7 @@ let objectplacholder = {
 
 //! This will change based off what object we are inputting
 let selectionObject = objectplacholder; // Default Data
-//selectionObject = octStudents;
+selectionObject = octStudents;
 //selectionObject = pokemon151;
 //selectionObject = testArray;
 
@@ -79,6 +80,9 @@ function createWheel(object) {
     wedgeContent.className = "value";
     wedgeContent.innerText = object.array[i];
     wedge.appendChild(wedgeContent);
+  }
+  if (object.array.length > 25) {
+    optionalSelection.style = `display: block;`;
   }
 }
 
