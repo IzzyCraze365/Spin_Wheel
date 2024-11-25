@@ -29,7 +29,7 @@ let objectplacholder = {
 //! This will change based off what object we are inputting
 let selectionObject = objectplacholder; // Default Data
 //selectionObject = octStudents;
-selectionObject = pokemon151;
+//selectionObject = pokemon151;
 //selectionObject = testArray;
 
 // This is the Color Wheel for the Spinner
