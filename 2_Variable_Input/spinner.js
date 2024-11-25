@@ -1,5 +1,5 @@
-import testArray from "./test.js";
-import octStudents from "./ptsb-oct-2024-cohort.js";
+import testArray from "../Spinner-Data/test.js";
+import octStudents from "../Spinner-Data/ptsb-oct-2024-cohort.js";
 
 let wheel = document.querySelector(".wheel");
 let title = document.querySelector(".title");
