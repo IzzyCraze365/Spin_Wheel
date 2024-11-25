@@ -1,5 +1,6 @@
 import testArray from "../Spinner-Data/test.js";
 import octStudents from "../Spinner-Data/ptsb-oct-2024-cohort.js";
+import pokemon151 from "../Spinner-Data/pokemon.js";
 
 let wheel = document.querySelector(".wheel");
 let title = document.querySelector(".title");
@@ -27,8 +28,9 @@ let objectplacholder = {
 
 //! This will change based off what object we are inputting
 let selectionObject = objectplacholder; // Default Data
-//let selectionObject = testArray;
-//let selectionObject = octStudents;
+//selectionObject = octStudents;
+selectionObject = pokemon151;
+//selectionObject = testArray;
 
 // This is the Color Wheel for the Spinner
 let colorArray = [
