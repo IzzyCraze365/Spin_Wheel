@@ -1,6 +1,7 @@
 import testArray from "../Spinner-Data/test.js";
 import octStudents from "../Spinner-Data/ptsb-oct-2024-cohort.js";
 import pokemon151 from "../Spinner-Data/pokemon.js";
+import jsc2455 from "../Spinner-Data/JSC-2455.js";
 
 let wheel = document.querySelector(".wheel");
 let title = document.querySelector(".title");
@@ -30,6 +31,7 @@ let objectplacholder = {
 //! This will change based off what object we are inputting
 let selectionObject = objectplacholder; // Default Data
 selectionObject = octStudents;
+selectionObject = jsc2455;
 //selectionObject = pokemon151;
 //selectionObject = testArray;
 
