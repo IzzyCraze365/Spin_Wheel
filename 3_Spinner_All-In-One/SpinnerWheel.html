@@ -80,25 +80,25 @@
         border: 4px solid rgba(0, 0, 0, 0.75);
         cursor: pointer; /* makes the mouse a hand when hovering over button */
         user-select: none;
-        z-index: 2;
+        z-index: 3;
       }
 
       /* This styles and creates the arrow on the Spin Button */
       .spinBtn::before {
         content: "";
         position: absolute;
-        top: -45px;
+        top: -25px;
+        left: -15px;
         width: 35px;
         height: 50px;
         background: var(--primary);
-        clip-path: polygon(
-          50% 0%,
-          15% 100%,
-          85% 100%
-        ); /* This creates the triangle shape, https://bennettfeely.com/clippy/ */
+        /* This creates the triangle shape, https://bennettfeely.com/clippy/ */
+        clip-path: polygon(0 0, 100% 50%, 100% 100%, 50% 100%);
+        z-index: -1;
       }
 
       /* This styles and creates the actual wheel */
+      /* TODO This is what I need to do to make the wheel fill up the space */
       .wheel {
         position: absolute;
         top: 0;
@@ -155,6 +155,7 @@
         font-size: 0.75em;
         font-weight: 500;
       }
+
       /* TODO - THe following class is optional if you want the result to be displayed seperate from the Spinner Wheel 
 NOTE: that the more wedge pieces added the less accurate the wheel becomes so a display may be recommended */
       .optionalSelection {
@@ -178,6 +179,7 @@ NOTE: that the more wedge pieces added the less accurate the wheel becomes so a 
       import testArray from "../Spinner-Data/test.js";
       import octStudents from "../Spinner-Data/ptsb-oct-2024-cohort.js";
       import pokemon151 from "../Spinner-Data/pokemon.js";
+      import jsc2455 from "../Spinner-Data/JSC-2455.js";
 
       let wheel = document.querySelector(".wheel");
       let title = document.querySelector(".title");
@@ -205,9 +207,10 @@ NOTE: that the more wedge pieces added the less accurate the wheel becomes so a 
       };
 
       //! This will change based off what object we are inputting
-      let selectionObject = objectplacholder;
-      //selectionObject = pokemon151;
+      let selectionObject = objectplacholder; // Default Data
       selectionObject = octStudents;
+      selectionObject = jsc2455;
+      //selectionObject = pokemon151;
       //selectionObject = testArray;
 
       // This is the Color Wheel for the Spinner
@@ -271,10 +274,10 @@ NOTE: that the more wedge pieces added the less accurate the wheel becomes so a 
         result.innerHTML = "";
         /* console.log("Button Clicked", value); //! TEST */
         value += Math.ceil(Math.random() * 3600);
-        /* console.log("Total Value", value); //! TEST */
+        /*console.log("Total Value", value); //! TEST */
         /* console.log("New Value", value % 360); //! TEST */
         wheel.style.transform = `rotate(${value}deg)`;
-        let position = (value - 2 * selectionObject.array.length) % 360; //The roulet is about 15 degrees off center so this centers it
+        let position = value % 360; //The roulet is about 15 degrees off center so this centers it
         setTimeout(resultReveal, 5500, position); //Function will run after 5.5 seconds
       }
 
