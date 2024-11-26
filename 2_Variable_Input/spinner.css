@@ -83,18 +83,13 @@ body {
 .spinBtn::before {
   content: "";
   position: absolute;
-  top: -45px;
+  top: -25px;
+  left: -15px;
   width: 35px;
   height: 50px;
   background: var(--primary);
-  clip-path: polygon(
-    50% 0%,
-    15% 100%,
-    85% 100%
-  );
-  clip-path: polygon(0 0, 100% 50%, 100% 100%, 50% 100%); /* This creates the triangle shape, https://bennettfeely.com/clippy/ */
-  top:-25px;
-  left: -15px;
+  /* This creates the triangle shape, https://bennettfeely.com/clippy/ */
+  clip-path: polygon(0 0, 100% 50%, 100% 100%, 50% 100%);
   z-index: -1;
 }
 

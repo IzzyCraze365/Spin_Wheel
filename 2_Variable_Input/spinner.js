@@ -97,7 +97,7 @@ function spinTheWheel() {
   /*console.log("Total Value", value); //! TEST */
   /* console.log("New Value", value % 360); //! TEST */
   wheel.style.transform = `rotate(${value}deg)`;
-    let position = (value) % 360; //The roulet is about 15 degrees off center so this centers it
+  let position = value % 360; //The roulet is about 15 degrees off center so this centers it
   setTimeout(resultReveal, 5500, position); //Function will run after 5.5 seconds
 }
 
