@@ -94,6 +94,7 @@ body {
 }
 
 /* This styles and creates the actual wheel */
+/* TODO This is what I need to do to make the wheel fill up the space */
 .wheel {
   position: absolute;
   top: 0;
