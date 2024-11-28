@@ -176,12 +176,6 @@ NOTE: that the more wedge pieces added the less accurate the wheel becomes so a 
       </div>
     </div>
     <script type="module">
-      import testArray from "../Spinner-Data/test.js";
-      import octStudents from "../Spinner-Data/ptsb-oct-2024-cohort.js";
-      import pokemon151 from "../Spinner-Data/pokemon.js";
-      import jsc2455 from "../Spinner-Data/JSC-2455.js";
-      import West from "../Spinner-Data/West.js";
-
       let wheel = document.querySelector(".wheel");
       let title = document.querySelector(".title");
       let optionalSelection = document.querySelector(".optionalSelection");
@@ -191,29 +185,24 @@ NOTE: that the more wedge pieces added the less accurate the wheel becomes so a 
       let value = 0;
 
       /* Arrray works NEEDS to have at least 4 items */
-      let objectplacholder = {
-        title: "Placeholder Title",
+      const westBullets = {
+        title: "Cap'n West's Bullets",
         array: [
-          "Array Item 1",
-          "Array Item 2",
-          "Array Item3 ",
-          "Array Item 4",
-          "Array Item 5",
-          "Array Item 6",
-          "Array Item 7",
-          "Array Item 8",
-          "Array Item 9",
+          "YEET",
+          "Hinder",
+          "YEET",
+          "Normal",
+          "Exhaustion",
+          "YEET",
+          "Exhaustion",
+          "YEET",
+          "Normal",
         ],
-        output: "Here is the placeholder output tag",
+        output: "Cap'n West has used the following Bullet!",
       };
 
       //! This will change based off what object we are inputting
-      let selectionObject = objectplacholder; // Default Data
-      selectionObject = octStudents;
-      selectionObject = jsc2455;
-      //selectionObject = pokemon151;
-      //selectionObject = testArray;
-      selectionObject = West;
+      let selectionObject = westBullets; // Bullets for Ash in GURPs Game
 
       // This is the Color Wheel for the Spinner
       let colorArray = [
