@@ -6,13 +6,13 @@ const octStudents = {
     "Sondos",
     "Jocelyn",
     "Christopher",
-    "Aria",
+    /* "Aria", */
     "Robenus",
     "Clive",
     "Alex",
-    "Giselle",
+    /* "Giselle", */
     "Nicholas",
-    "Joyce",
+    /* "Joyce", */
     "Natalie",
     "El",
     "Trenton",
