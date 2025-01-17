@@ -6,7 +6,7 @@ const octStudents = {
     "Sondos",
     "Jocelyn",
     "Christopher",
-    /* "Aria", */
+    "Aria",
     "Robenus",
     "Clive",
     "Alex",
