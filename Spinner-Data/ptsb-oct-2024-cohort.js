@@ -11,7 +11,7 @@ const octStudents = {
     "Clive",
     "Alex",
     /* "Giselle", */
-    "Nicholas",
+    /* "Nicholas", */
     /* "Joyce", */
     "Natalie",
     "El",

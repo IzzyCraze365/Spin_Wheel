@@ -30,8 +30,8 @@ let objectplacholder = {
 
 //! This will change based off what object we are inputting
 let selectionObject = objectplacholder; // Default Data
-selectionObject = octStudents;
-//selectionObject = jsc2455;
+//selectionObject = octStudents;
+selectionObject = jsc2455;
 //selectionObject = pokemon151;
 //selectionObject = testArray;
 
